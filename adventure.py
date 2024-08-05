@@ -1,8 +1,10 @@
 import decorator
-from battle_system import battlestate as bs
-from enemies import enemy_select, boss_select
 
-@decorator.battle_text
+#import classes
+import enemies
+# from enemies import enemy_select, boss_select
+
+@decorator.welcome_text
 def hello(greeting):
     print(f'{greeting}')
 
@@ -22,8 +24,10 @@ def writeScore(score, name):
     file.write(",")
     file.write("\n")
     file.close()
-
-bs()
+from battle_system import constant_score
+from battle_system import player_constant_health
+from battle_system import battlestate as bs
+bs(constant_score,player_constant_health)
 
 
 #

@@ -1,6 +1,6 @@
 #Hero Classes
 import random
-
+import decorator
 import character_info
 
 class Warrior(object):
@@ -10,6 +10,14 @@ class Warrior(object):
     defense = 10
     evasion = 4
     meva = 4
+
+    def __init__(self):
+        self.health = 50
+        self.strength = 10
+        self.magic = 1
+        self.defense = 10
+        self.evasion = 4
+        self.meva = 4
     def attack(self):
         damage = character_info.character.strength + random.randint(1,10)
         print(f'You hit the enemy causing {damage} damage!')

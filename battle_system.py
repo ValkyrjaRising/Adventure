@@ -1,13 +1,18 @@
 import random
-from enemies import enemy, boss, generate_enemy, generate_boss
+from enemies import enemy, enemy_select, boss, generate_enemy, generate_boss, enemy_score_values, boss_score_values
 import character_info
+import decorator
 
+player_constant_health = character_info.character.health
 player_health = character_info.character.health
+constant_score = 0
 
-def battlestate(score):
-    enemy
-    global player_health
-    player_health = character_info.character.health
+def battlestate(score, health):
+    global enemy
+    enemy = enemy_select()
+    # global player_health
+    global player_constant_health
+    player_health = player_constant_health
     print(f'A wild {enemy.name} has appeared!')
     while enemy.health > 0:
         print('Choose your action!')
@@ -31,8 +36,16 @@ def battlestate(score):
                 print(f'The {enemy.name} swings at you and misses!')
         else:
             print(f'You have slain the {enemy.name}!!!')
+            player_constant_health = player_health
+            enemy_dict_value = enemy.name
+            score += enemy_score_values[enemy_dict_value]
+            print(f'You\'re score is currently {score}')
+            global constant_score
+            constant_score = score
             print(f'The enemy dropped some loot! ')
-            score = 
 
 
-battlestate(score=0)
+# battlestate(constant_score, player_constant_health)
+# print(constant_score)
+# print(player_constant_health)
+# battlestate(constant_score, player_constant_health)

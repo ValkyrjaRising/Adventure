@@ -131,3 +131,5 @@ enemy = enemy_select()
 boss = 'default'
 generated_enemy = 'default'
 
+enemy_score_values = {'Goblin': 5, 'Orc': 10, 'Bat': 3, 'Cultist': 7, 'Sahagin': 10, 'Wolf': 8}
+boss_score_values = {'Dragon': 30, 'Behemoth': 25, 'Adamantoise': 25}
