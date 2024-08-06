@@ -1,5 +1,5 @@
 import random
-
+from loot import loot
 import enemies
 from enemies import enemy_select, enemy_score_values
 import character_info
@@ -26,7 +26,35 @@ def battlestate(score, character, enemy, battle_continue):
         elif choice == 2:
             print(f'You cast a spell at {enemy.name}')
         elif choice == 3:
-            print(f'You use an item. #enter item name and effect here')
+            print(character.inventory)
+            use_inventory = input('Enter the name of the item you want to use.\n').capitalize().strip()
+        #   item_effects = {
+        #             'Potion': (10, 'Potion'),
+        #             'Hi-Potion': (15, 'Hi-Potion'),
+        #             'Super-Potion': (25, 'Super-Potion')
+        #         }
+        #
+        #   if use_inventory in character.inventory:
+        #     heal_amount, item_name = item_effects[item]
+        #     character.health += heal_amount
+        #     character.remove_inventory(item_name)
+        #     print(f'You use the {item_name}! Your HP rose by {heal_amount} and is now {character.health}')
+        #   else:
+        #     print('Item not found or not usable.')
+            if use_inventory == 'Potion':
+                character.health += 10
+                character.remove_inventory(use_inventory)
+                print(f'You use the {use_inventory}! Your hp rose by 10 and is now {character.health}')
+            elif use_inventory == 'Hi-Potion' or use_inventory == 'Hi-potion' or use_inventory == 'Hipotion':
+                character.health += 15
+                use_inventory = 'Hi-Potion'
+                character.remove_inventory(use_inventory)
+                print(f'You use the {use_inventory}! Your hp rose by 15 and is now {character.health}')
+            elif use_inventory == 'Super-Potion' or use_inventory == 'Super-potion' or use_inventory == 'Superpotion':
+                character.health += 25
+                use_inventory = 'Super-Potion'
+                character.remove_inventory(use_inventory)
+                print(f'You use the {use_inventory}! Your hp rose by 25 and is now {character.health}')
         elif choice == 4:
             print(f'You use your skill. #enter skill name and effect here')
         elif choice == 5:
@@ -44,7 +72,9 @@ def battlestate(score, character, enemy, battle_continue):
         else:
             print(f'You have slain the {enemy.name}!!!')
             score += enemy_score_values.get(enemy.name, 0)
-            print('The enemy dropped some loot!')
+            enemy_loot = loot()
+            print(f'The enemy dropped a {enemy_loot}')
+            character.add_inventory(enemy_loot)
             print(f'You\'re score is currently {score}')
             enemy = enemies.generate_enemy()
             while True:

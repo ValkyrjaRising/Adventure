@@ -24,7 +24,7 @@ def main():
         enemy = generate_enemy()
         score, player_health, enemy, battle_continue = battlestate(score, character, enemy, battle_continue)
         #write_score(score, name)
-        if battle_continue != True:
+        if not battle_continue:
             break
     print('You got out of battle!')
 

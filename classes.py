@@ -9,12 +9,19 @@ class Character:
         self.defense = defense
         self.evasion = evasion
         self.meva = meva
+        self.inventory = []
 
     @decorator.attack_text
     def attack(self):
         damage = int(self.strength + random.randint(1, 10))
         print(f'You hit the enemy causing {damage} damage!')
         return damage
+    def add_inventory(self,item):
+        self.inventory.append(item)
+        return self.inventory
+    def remove_inventory(self, item):
+        self.inventory.remove(item)
+        return self.inventory
 
 
 class Warrior(Character):
