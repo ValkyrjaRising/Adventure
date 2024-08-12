@@ -1,5 +1,5 @@
-enemy_score_values = {'Goblin': 5, 'Orc': 10, 'Bat': 3}
+test = 'Yes'
 
-enemy = 'Goblin'
+test = True
 
-print(enemy_score_values[enemy] + 5)
+print(test)
